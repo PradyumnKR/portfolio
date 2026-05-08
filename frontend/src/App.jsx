@@ -1,0 +1,54 @@
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ScanlineOverlay from './components/ScanlineOverlay';
+import CustomCursor from './components/CustomCursor';
+import MusicToggle from './components/MusicToggle';
+import TypewriterSound from './components/TypewriterSound';
+import LoadingScreen from './components/LoadingScreen';
+
+// Import Pages
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Skills from './pages/Skills';
+import CaseStudy from './pages/CaseStudy';
+import FieldNotes from './pages/FieldNotes';
+import Resume from './pages/Resume';
+
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="relative flex min-h-screen w-full flex-col font-mono bg-espresso text-parchment selection:bg-gold/30 selection:text-white overflow-x-hidden">
+      <AnimatePresence mode="wait">
+        {isLoading && <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
+      <CustomCursor />
+      <TypewriterSound />
+      <MusicToggle />
+      <ScanlineOverlay />
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects/:id" element={<CaseStudy />} />
+          <Route path="/journal" element={<FieldNotes />} />
+          <Route path="/resume" element={<Resume />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
