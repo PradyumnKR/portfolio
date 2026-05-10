@@ -24,7 +24,7 @@ export default function LoadingScreen({ onComplete }) {
       exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
     >
       {/* Heavy CRT Grain just for the loading screen */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg_viewBox=%270_0_256_256%27_xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter_id=%27noise%27%3E%3CfeTurbulence_type=%27fractalNoise%27_baseFrequency=%270.9%27_numOctaves=%274%27_stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect_width=%27100%25%27_height=%27100%25%27_filter=%27url(%23noise)%27/%3E%3C/svg%3E')] opacity-30 mix-blend-overlay"></div>
       
       {/* Subtle vignette to focus the center */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a0806_100%)] opacity-80"></div>

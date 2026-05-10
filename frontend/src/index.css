@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-espresso: #120d09;
+  --color-espresso: #0e0c09;
   --color-parchment: #e0d7c6;
   --color-gold: #c5a059;
   --color-ink-dim: rgba(224, 215, 198, 0.6);
@@ -23,9 +23,20 @@
 
   body {
     @apply bg-espresso text-parchment selection:bg-gold/30 selection:text-white;
+    background-color: #0e0c09;
     overflow-x: hidden;
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: -0.02em;
+  }
+
+  /* ZONE A — Outer shell pages (darker) */
+  .home-page, .about-page, .contact-page {
+    background-color: #0e0c09 !important;
+  }
+
+  /* ZONE B — Archive content pages (warmer) */
+  .arsenal-page, .journal-page, .projects-page, .dossier-page {
+    background-color: #1a1710 !important;
   }
 }
 
@@ -135,6 +146,171 @@
     background-size: 100% 2rem;
   }
 
+  .archival-frame {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* LAYER 1 - Corner Brackets */
+  .archival-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    background: 
+      /* Top Left */
+      linear-gradient(to right, #c8a96e 2px, transparent 2px) 0 0 / 18px 18px,
+      linear-gradient(to bottom, #c8a96e 2px, transparent 2px) 0 0 / 18px 18px,
+      /* Top Right */
+      linear-gradient(to left, #c8a96e 2px, transparent 2px) 100% 0 / 18px 18px,
+      linear-gradient(to bottom, #c8a96e 2px, transparent 2px) 100% 0 / 18px 18px,
+      /* Bottom Left */
+      linear-gradient(to right, #c8a96e 2px, transparent 2px) 0 100% / 18px 18px,
+      linear-gradient(to top, #c8a96e 2px, transparent 2px) 0 100% / 18px 18px,
+      /* Bottom Right */
+      linear-gradient(to left, #c8a96e 2px, transparent 2px) 100% 100% / 18px 18px,
+      linear-gradient(to top, #c8a96e 2px, transparent 2px) 100% 100% / 18px 18px;
+    background-repeat: no-repeat;
+  }
+
+  @keyframes cardScanline {
+    0% { top: -100%; }
+    100% { top: 200%; }
+  }
+
+  .project-bracket {
+    position: relative;
+    overflow: visible;
+    border-radius: 0;
+    cursor: pointer;
+  }
+
+  .project-bracket::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 30;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    background: 
+      /* Top Left */
+      linear-gradient(to right, #c8a96e 1.5px, transparent 1.5px) 0 0 / 14px 14px,
+      linear-gradient(to bottom, #c8a96e 1.5px, transparent 1.5px) 0 0 / 14px 14px,
+      /* Top Right */
+      linear-gradient(to left, #c8a96e 1.5px, transparent 1.5px) 100% 0 / 14px 14px,
+      linear-gradient(to bottom, #c8a96e 1.5px, transparent 1.5px) 100% 0 / 14px 14px,
+      /* Bottom Left */
+      linear-gradient(to right, #c8a96e 1.5px, transparent 1.5px) 0 100% / 14px 14px,
+      linear-gradient(to top, #c8a96e 1.5px, transparent 1.5px) 0 100% / 14px 14px,
+      /* Bottom Right */
+      linear-gradient(to left, #c8a96e 1.5px, transparent 1.5px) 100% 100% / 14px 14px,
+      linear-gradient(to top, #c8a96e 1.5px, transparent 1.5px) 100% 100% / 14px 14px;
+    background-repeat: no-repeat;
+  }
+
+  .project-bracket:hover::before {
+    opacity: 1;
+  }
+
+  .project-card-inner {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(200,169,110,0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+  }
+
+  .project-bracket:hover .project-card-inner {
+    transform: translateY(-2px);
+    border-color: rgba(200,169,110,0.5);
+    box-shadow: 
+      0 0 12px rgba(200,169,110,0.08),
+      inset 0 0 12px rgba(200,169,110,0.03);
+  }
+
+  .project-card-inner::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(200,169,110,0.04) 40%,
+      rgba(200,169,110,0.08) 50%,
+      rgba(200,169,110,0.04) 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .project-bracket:hover .project-card-inner::after {
+    animation: cardScanline 600ms ease-in-out forwards;
+  }
+
+  .contact-panel-brackets {
+    position: relative;
+  }
+
+  .contact-panel-brackets::before,
+  .contact-panel-brackets::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #c8a96e;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 30;
+  }
+
+  .contact-panel-brackets::before {
+    top: -8px;
+    left: -8px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .contact-panel-brackets::after {
+    bottom: -8px;
+    right: -8px;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* LAYER 3 - Vignette */
+  .archival-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(14,12,9,0.75) 100%);
+  }
+
+  .archival-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 25;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .redacted {
+    background-color: #c8a96e;
+    opacity: 0.9;
+    color: transparent;
+    user-select: none;
+    padding: 0 4px;
+    display: inline-block;
+  }
+
   /* Global CRT Scanline Overlay */
   .crt-overlay::after {
     content: " ";
@@ -172,10 +348,16 @@
     animation: fog-drift 24s ease-in-out infinite alternate;
   }
 
-  .archive-watermark {
-    text-shadow: 0 0 26px rgba(197, 160, 89, 0.24);
-    animation: watermark-breathe 10s ease-in-out infinite;
-  }
+  /* Replace the existing .archive-watermark rule */
+.archive-watermark {
+  text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+  filter: blur(0.5px);
+  animation: watermark-breathe 10s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  /* NO static opacity here — let animation control it entirely */
+}
 
   .scan-beam {
     background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.12), transparent);
@@ -246,42 +428,68 @@
   .crt-button:focus-visible::after {
     opacity: 0.24;
   }
+
+  .cell-unfilled {
+    background: rgba(200, 169, 110, 0.12);
+    opacity: 1;
+  }
+
+  .cell-filled {
+    background: #c8a96e;
+    opacity: 1;
+  }
 }
 
 /* Status Blink System Animations */
-@keyframes pulse-status-online {
-  0% { box-shadow: 0 0 3px #3aff6a; }
-  50% { box-shadow: 0 0 8px #3aff6a; }
-  100% { box-shadow: 0 0 3px #3aff6a; }
+@keyframes goldPulse {
+  0%   { box-shadow: 0 0 0px 0px rgba(200,169,110,0); }
+  50%  { box-shadow: 0 0 8px 4px rgba(200,169,110,0.5); }
+  100% { box-shadow: 0 0 0px 0px rgba(200,169,110,0); }
 }
 
-@keyframes pulse-status-standby {
-  0% { box-shadow: 0 0 4px #f0c040; }
-  50% { box-shadow: 0 0 10px #f0c040; }
-  100% { box-shadow: 0 0 4px #f0c040; }
+@keyframes statusPulseOnline {
+  0%   { box-shadow: 0 0 0px 0px rgba(58, 255, 106, 0.0); }
+  50%  { box-shadow: 0 0 6px 3px rgba(58, 255, 106, 0.6); }
+  100% { box-shadow: 0 0 0px 0px rgba(58, 255, 106, 0.0); }
 }
 
-@keyframes pulse-status-offline {
-  0% { box-shadow: 0 0 2px #ff4444; }
-  50% { box-shadow: 0 0 5px #ff4444; }
-  100% { box-shadow: 0 0 2px #ff4444; }
+@keyframes statusPulseStandby {
+  0%   { box-shadow: 0 0 0px 0px rgba(240, 192, 64, 0.0); }
+  50%  { box-shadow: 0 0 8px 4px rgba(240, 192, 64, 0.6); }
+  100% { box-shadow: 0 0 0px 0px rgba(240, 192, 64, 0.0); }
+}
+
+@keyframes statusPulseOffline {
+  0%   { box-shadow: 0 0 0px 0px rgba(255, 68, 68, 0.0); }
+  50%  { box-shadow: 0 0 4px 2px rgba(255, 68, 68, 0.4); }
+  100% { box-shadow: 0 0 0px 0px rgba(255, 68, 68, 0.0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: blink 0.8s step-end infinite;
 }
 
 .status-blink-online {
   background-color: #3aff6a;
-  animation: pulse-status-online 2s ease-in-out infinite;
-  opacity: 0.6;
+  animation: statusPulseOnline 2s ease-in-out infinite;
+  display: inline-block;
 }
 
 .status-blink-standby {
   background-color: #f0c040;
-  animation: pulse-status-standby 1.2s ease-in-out infinite;
-  opacity: 0.7;
+  animation: statusPulseStandby 1.2s ease-in-out infinite;
+  display: inline-block;
 }
+
 .status-blink-offline {
   background-color: #ff4444;
-  animation: pulse-status-offline 3s ease-in-out infinite;
-  opacity: 0.6;
+  animation: statusPulseOffline 3s ease-in-out infinite;
+  display: inline-block;
 }
 
 /* Ticker Depth Animations */
@@ -315,9 +523,16 @@
   100% { transform: translate3d(4%, -2%, 0) scale(1.02); opacity: 0.52; }
 }
 
+/* Replace the existing watermark-breathe keyframe */
 @keyframes watermark-breathe {
-  0%, 100% { opacity: 0.026; filter: blur(1px); }
-  50% { opacity: 0.055; filter: blur(0px); }
+  0%, 100% { 
+    opacity: 0.026; 
+    filter: blur(0.5px); 
+  }
+  50% { 
+    opacity: 0.055; 
+    filter: blur(0px); 
+  }
 }
 
 @keyframes beam-sweep {

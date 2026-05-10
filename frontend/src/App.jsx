@@ -9,6 +9,9 @@ import CustomCursor from './components/CustomCursor';
 import MusicToggle from './components/MusicToggle';
 import TypewriterSound from './components/TypewriterSound';
 import LoadingScreen from './components/LoadingScreen';
+import ScrollToTop from './components/ScrollToTop';
+import CursorTrail from './components/CursorTrail';
+import IdleDetector from './components/IdleDetector';
 
 // Import Pages
 import Home from './pages/Home';
@@ -25,6 +28,9 @@ function App() {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col font-mono bg-espresso text-parchment selection:bg-gold/30 selection:text-white overflow-x-hidden">
+      <ScrollToTop />
+      <CursorTrail />
+      <IdleDetector />
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>

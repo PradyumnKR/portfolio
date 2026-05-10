@@ -14,7 +14,7 @@ const CRTToggle = () => {
   return (
     <button 
       onClick={() => setCrtEnabled(!crtEnabled)}
-      className="fixed bottom-5 right-5 z-[10000] px-3 py-1 bg-gold/5 border border-gold/20 text-[9px] font-mono text-gold/45 uppercase tracking-widest opacity-55 hover:opacity-100 hover:bg-gold hover:text-espresso focus-visible:opacity-100 transition-all md:bottom-6 md:right-6"
+      className="mt-[10px] px-[10px] py-[4px] border border-[rgba(200,169,110,0.25)] text-[10px] font-mono text-[rgba(200,169,110,0.6)] uppercase tracking-[0.15em] hover:border-[#c8a96e] hover:text-[#c8a96e] transition-all duration-200"
     >
       [CRT: {crtEnabled ? 'ON' : 'OFF'}]
     </button>

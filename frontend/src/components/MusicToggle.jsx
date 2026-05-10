@@ -65,7 +65,7 @@ export default function MusicToggle() {
       playAttemptedRef.current = true; // Mark as attempted so global listeners don't override the user's pause
     } else {
       audioRef.current.play().catch(err => {
-        console.error("Audio playback failed. Make sure 'track.mp3' is in the public folder:", err);
+        console.error("Audio playback failed. Make sure 'Resident Evil Remake Soundtrack _Save Heaven_.mp3' is in the public folder:", err);
       });
     }
     setIsPlaying(!isPlaying);
@@ -79,7 +79,7 @@ export default function MusicToggle() {
     >
       <audio 
         ref={audioRef} 
-        src="/track.mp3" 
+        src="/Resident Evil Remake Soundtrack _Save Heaven_.mp3" 
       />
       
       <motion.button
@@ -133,7 +133,7 @@ export default function MusicToggle() {
               Ambient Audio
             </span>
             <span className="text-[10px] text-parchment italic font-serif mt-1">
-              {isPlaying ? 'Now Playing: track.mp3' : 'Summon the music'}
+              {isPlaying ? 'Now Playing: Resident Evil Remake Soundtrack _Save Heaven_.mp3' : 'Summon the music'}
             </span>
           </motion.div>
         )}

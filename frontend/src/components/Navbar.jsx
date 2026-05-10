@@ -82,7 +82,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="relative z-50 px-6 py-4 lg:px-20 bg-[rgba(14,12,9,0.86)] backdrop-blur-[10px] border-b border-gold/10 sticky top-0 shadow-2xl overflow-visible">
+    <header className="fixed top-0 left-0 right-0 z-[100] px-6 py-4 lg:px-20 bg-[rgba(14,12,9,0.85)] backdrop-blur-md border-b border-gold/10 shadow-2xl overflow-visible">
       <div className="archive-watermark absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-6xl font-black uppercase tracking-[0.3em] text-gold pointer-events-none">
         DOSSIER
       </div>
@@ -93,7 +93,7 @@ export default function Navbar() {
       <div className="pointer-events-none absolute bottom-2 right-8 hidden text-[8px] uppercase tracking-[0.35em] text-gold/25 lg:block">
         ARCHIVE DEPTH // LVL-04
       </div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between relative z-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between relative z-10 h-10">
         <div className="flex items-center gap-6">
           <StatusIndicator 
             state="online" 
@@ -104,46 +104,43 @@ export default function Navbar() {
           <GlitchLogo />
         </div>
 
-        <nav className="hidden xl:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-[11px] font-bold tracking-[0.3em] uppercase transition-colors flex items-center gap-2 group relative py-1 ${
+                className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors flex items-center gap-2 group relative py-1 ${
                   isActive ? 'text-gold' : 'text-ink-dim hover:text-gold'
                 }`}
               >
                 {/* Status Indicator Dot */}
-                <div className={`w-1 h-1 rounded-full transition-all duration-300 mr-[6px] ${
+                <div className={`w-1 h-1 rounded-full transition-all duration-300 ${
                   isActive ? 'bg-gold nav-active-dot' : 'bg-gold/30 group-hover:bg-gold group-hover:nav-dot-pulse'
                 }`} />
                 
                 {link.name}
-
-                {/* Animated Underline */}
-                <span className={`absolute bottom-0 left-[10px] right-0 h-px bg-gold transform origin-left transition-transform duration-200 ${
-                  isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`} />
               </Link>
             );
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <SystemClock />
-        </div>
+        <div className="flex items-center gap-6">
+          <div className="hidden md:block">
+            <SystemClock />
+          </div>
 
-        {/* Mobile Toggle */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="xl:hidden text-gold p-2"
-        >
-          <span className="material-symbols-outlined">
-            {isOpen ? 'close' : 'menu'}
-          </span>
-        </button>
+          {/* Mobile Toggle */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-gold p-2"
+          >
+            <span className="material-symbols-outlined">
+              {isOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
