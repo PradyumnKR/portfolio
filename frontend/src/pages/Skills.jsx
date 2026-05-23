@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 const SKILLS = [
@@ -166,43 +166,43 @@ export default function Skills() {
     <div className="arsenal-page bg-[#1a1710] min-h-screen py-24 px-6 overflow-hidden relative">
       <div className="absolute inset-0 rain-effect opacity-10 pointer-events-none"></div>
       
-      <main className="max-w-7xl mx-auto relative z-10">
+      <main className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-gold/10 pb-8"
+          className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 border-b border-gold/10 pb-8 gap-6"
         >
-          <div className="space-y-4 text-left">
-            <span className="text-[10px] tracking-[0.5em] uppercase text-gold/60 block">Tactical Loadout // Arsenal</span>
-            <h1 className="text-5xl font-light text-gold tracking-tighter uppercase">The Weapons Manifest</h1>
+          <div className="space-y-3 text-left">
+            <span className="text-[9px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.5em] uppercase text-gold/60 block">Tactical Loadout // Arsenal</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gold tracking-tighter uppercase leading-none">The Weapons Manifest</h1>
           </div>
-          <div className="text-right hidden md:block">
-            <p className="text-[10px] text-ink-dim uppercase tracking-[0.3em]">Operator Status: Combat Ready</p>
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em]">Unit ID: JULIAN_THORNE_v9.4</p>
+          <div className="text-left md:text-right w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-2 sm:gap-8 md:gap-2 border-t border-gold/5 pt-4 md:border-none md:pt-0">
+            <p className="text-[9px] sm:text-[10px] text-ink-dim uppercase tracking-[0.2em] sm:tracking-[0.3em]">Operator Status: <span className="text-gold">Combat Ready</span></p>
+            <p className="text-[9px] sm:text-[10px] text-gold uppercase tracking-[0.2em] sm:tracking-[0.3em]">Unit ID: PRADYUMN_KR_V1.0</p>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {SKILLS.map((group, groupIndex) => (
             <motion.section 
               key={group.category}
-              initial={{ opacity: 0, x: groupIndex % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: groupIndex * 0.2 }}
-              className="bg-gold/5 border border-gold/12 border-t-gold/35 p-8 group hover:bg-gold/[0.08] transition-all rounded-none"
+              transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
+              className="bg-gold/5 border border-gold/12 border-t-gold/35 p-6 sm:p-8 group hover:bg-gold/[0.08] transition-all rounded-none shadow-xl"
             >
-              <h2 className="text-sm font-bold text-gold uppercase tracking-[0.3em] mb-10 flex items-center gap-4">
-                <span className="size-2 bg-wax-red animate-pulse"></span>
+              <h2 className="text-xs sm:text-sm font-bold text-gold uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-10 flex items-center gap-4">
+                <span className="size-2 bg-wax-red animate-pulse shrink-0"></span>
                 {group.category}
               </h2>
               
-              <div className="space-y-10">
+              <div className="space-y-10 sm:space-y-12">
                 {group.items.map((skill) => (
                   <div key={skill.name} className="space-y-3">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0">
                       <span className="text-xs font-bold text-parchment uppercase tracking-widest">{skill.name}</span>
-                      <span className="text-[9px] font-mono text-gold/75 uppercase tracking-[0.15em] border border-gold/40 px-[6px] py-[2px]">AUTHORIZED_USE</span>
+                      <span className="w-fit text-[8px] sm:text-[9px] font-mono text-gold/75 uppercase tracking-[0.15em] border border-gold/40 px-[6px] py-[2px]">AUTHORIZED_USE</span>
                     </div>
                     <ArsenalMeter level={skill.level} />
                   </div>
@@ -213,23 +213,27 @@ export default function Skills() {
         </div>
 
         {/* Tactical Overlay Elements */}
-        <div className="mt-16 flex justify-center">
-          <div className="px-10 py-4 border border-gold/20 flex gap-12">
-            <div className="flex flex-col gap-1">
+        <div className="mt-20 flex justify-center">
+          <div className="px-6 sm:px-10 py-5 border border-gold/20 flex flex-col sm:flex-row gap-8 sm:gap-16 md:gap-24 bg-espresso/40 backdrop-blur-sm relative overflow-hidden group/overlay">
+            <div className="absolute inset-0 scan-beam opacity-5 pointer-events-none"></div>
+            
+            <div className="flex flex-col gap-2">
               <span className="text-[8px] text-gold/60 uppercase tracking-widest">Energy Grid</span>
               <div className="flex gap-[2px]">
                 {Array.from({ length: 12 }).map((_, i) => (
-                  <div key={i} className="w-1 h-[8px] bg-gold" />
+                  <div key={i} className="w-1.5 h-[10px] bg-gold opacity-80" />
                 ))}
               </div>
             </div>
-            <div className="flex flex-col gap-1">
+            
+            <div className="flex flex-col gap-2">
               <span className="text-[8px] text-gold/60 uppercase tracking-widest">Network_Sync</span>
-              <span className="text-[10px] text-parchment/85 font-mono uppercase">STABLE_CONNECTED</span>
+              <span className="text-[10px] text-parchment/85 font-mono uppercase tracking-wider">STABLE_CONNECTED</span>
             </div>
-            <div className="flex flex-col gap-1 text-right">
+            
+            <div className="flex flex-col gap-2 sm:text-right">
               <span className="text-[8px] text-gold/60 uppercase tracking-widest">Manifest_v1.0</span>
-              <span className="text-[10px] text-parchment/85 font-mono">05.07.2026</span>
+              <span className="text-[10px] text-parchment/85 font-mono tracking-wider">05.07.2026</span>
             </div>
           </div>
         </div>

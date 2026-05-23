@@ -52,7 +52,7 @@ export default function CustomCursor() {
     <>
       {/* Inner Dot: The precise point of interaction */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-gold rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-gold rounded-full pointer-events-none z-[1000001]"
         style={{
           x: dotX,
           y: dotY,
@@ -67,7 +67,7 @@ export default function CustomCursor() {
       
       {/* Outer Ring: The aesthetic trail */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-gold/40 rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-8 h-8 border border-gold/40 rounded-full pointer-events-none z-[1000000]"
         animate={{
           scale: isMouseDown ? 0.8 : (isHovered ? 1.8 : 1),
           borderWidth: isHovered ? '1px' : '2px',
@@ -83,7 +83,7 @@ export default function CustomCursor() {
 
       {/* Pulsing Aura: Subtle depth on hover */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 bg-gold/5 rounded-full pointer-events-none z-[9997]"
+        className="fixed top-0 left-0 w-12 h-12 bg-gold/5 rounded-full pointer-events-none z-[999999]"
         animate={{
           scale: isHovered ? 2.5 : 0,
           opacity: isHovered ? 0.3 : 0,

@@ -199,7 +199,7 @@ export default function CaseStudy() {
 
         {/* Footer Marking */}
         <div className="mt-24 pt-8 border-t border-gold/10 flex justify-between items-center opacity-30">
-          <span className="text-[8px] uppercase tracking-widest text-gold">Property of the Digital Scriptorium</span>
+          <span className="text-[8px] uppercase tracking-widest text-gold">Property of NOCTURNE STUDIES</span>
           <div className="flex gap-4">
             <span className="text-[8px] font-mono">FILE_VER: 9.2</span>
             <span className="text-[8px] font-mono">CHECKSUM: 0x82F...</span>

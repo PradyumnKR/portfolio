@@ -664,3 +664,8 @@
   80% { clip-path: inset(54% 0 7% 0); transform: translate(-2px, 2px); }
   100% { clip-path: inset(58% 0 43% 0); transform: translate(2px, -2px); }
 }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

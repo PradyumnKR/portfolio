@@ -12,6 +12,8 @@ import LoadingScreen from './components/LoadingScreen';
 import ScrollToTop from './components/ScrollToTop';
 import CursorTrail from './components/CursorTrail';
 import IdleDetector from './components/IdleDetector';
+import HiddenTerminal from './components/HiddenTerminal';
+import KonamiCode from './components/KonamiCode';
 
 // Import Pages
 import Home from './pages/Home';
@@ -22,6 +24,7 @@ import Skills from './pages/Skills';
 import CaseStudy from './pages/CaseStudy';
 import FieldNotes from './pages/FieldNotes';
 import Resume from './pages/Resume';
+import NotFound from './pages/NotFound';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,13 +35,20 @@ function App() {
       <CursorTrail />
       <IdleDetector />
       <AnimatePresence mode="wait">
-        {isLoading && <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />}
+        {isLoading && (
+          <LoadingScreen 
+            key="loading" 
+            onComplete={() => setIsLoading(false)} 
+          />
+        )}
       </AnimatePresence>
 
       <CustomCursor />
       <TypewriterSound />
       <MusicToggle />
       <ScanlineOverlay />
+      <HiddenTerminal />
+      <KonamiCode />
       <Navbar />
       <main className="flex-1">
         <Routes>
@@ -50,6 +60,7 @@ function App() {
           <Route path="/projects/:id" element={<CaseStudy />} />
           <Route path="/journal" element={<FieldNotes />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

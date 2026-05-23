@@ -12,7 +12,7 @@ const GlitchText = ({ text, delay = 0 }) => {
     if (displayText.length < text.length) {
       timeout = setTimeout(() => {
         setDisplayText(text.slice(0, displayText.length + 1));
-      }, 60 + delay);
+      }, 30 + delay);
     } else {
       // Use setTimeout to avoid synchronous setState in effect
       const completeTimeout = setTimeout(() => setIsComplete(true), 10);

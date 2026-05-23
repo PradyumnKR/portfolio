@@ -23,7 +23,7 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',      // Replace with your EmailJS Service ID
+        'service_1i8ilza',      // Replace with your EmailJS Service ID
         'YOUR_TEMPLATE_ID',     // Replace with your EmailJS Template ID
         formRef.current,
         'YOUR_PUBLIC_KEY'       // Replace with your EmailJS Public Key
@@ -102,7 +102,7 @@ export default function Contact() {
                     <span className="text-[#c8a96e] opacity-50 mr-[6px] text-[10px]">›</span>
                     <p className="text-[#c8a96e] opacity-55 text-[9px] uppercase tracking-[0.2em] font-mono">Current Frequency</p>
                   </div>
-                  <p className="text-[rgba(240,234,216,0.8)] font-mono text-[12px]">shukla.pradyumn@gmail.com</p>
+                  <p className="text-[rgba(240,234,216,0.8)] font-mono text-[12px]">pradyumnkrshukla.4672@gmail.com</p>
                 </div>
               </div>
 
@@ -185,16 +185,18 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     ></textarea>
                   </div>
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-4 border-t border-iron">
-                    <StatusIndicator 
-                      state="online" 
-                      label="Signal Strength: Optimal" 
-                      className="text-gold/40"
-                    />
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-iron">
+                    <div className="w-full md:w-auto">
+                      <StatusIndicator 
+                        state="online" 
+                        label="Signal Strength: Optimal" 
+                        className="text-gold/40"
+                      />
+                    </div>
                     <button 
                       type="submit" 
                       disabled={status === 'submitting'}
-                      className={`w-full md:w-auto px-[32px] py-[14px] bg-transparent border font-mono text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-250 ease-in-out ${getButtonStyles()} ${status === 'submitting' ? 'pointer-events-none' : ''}`}
+                      className={`w-full md:w-auto px-8 sm:px-[32px] py-3.5 sm:py-[14px] bg-transparent border font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-250 ease-in-out ${getButtonStyles()} ${status === 'submitting' ? 'pointer-events-none' : ''}`}
                     >
                       {getButtonText()}
                       {status !== 'submitting' && status !== 'success' && status !== 'error' && (

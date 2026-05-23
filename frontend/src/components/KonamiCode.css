@@ -1,0 +1,331 @@
+/* KonamiCode.css - Cinematic Breach Sequence */
+
+.konami-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  pointer-events: none;
+  isolation: isolate;
+  /* Dark backdrop to mask the app behind */
+  background: transparent;
+  transition: background 0.8s ease;
+}
+
+.konami-overlay.active {
+  pointer-events: all;
+  background: radial-gradient(
+    circle at center,
+    rgba(24, 14, 10, 1) 0%,
+    rgba(5, 3, 2, 1) 100%
+  );
+}
+
+.konami-content {
+  position: relative;
+  z-index: 100;
+  width: min(92vw, 1400px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.warning-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.glitch-burst {
+  animation: konami-shake 0.2s linear;
+}
+
+@keyframes konami-shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 2px); }
+  50% { transform: translate(4px, -2px); }
+  75% { transform: translate(-2px, -4px); }
+}
+
+/* Background Layers - Layered from 10 to 50 to stay behind content (100) */
+.konami-noise {
+  position: absolute;
+  inset: -100%;
+  z-index: 10;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: konami-noise-fast 0.2s steps(1) infinite;
+}
+
+@keyframes konami-noise-fast {
+  0% { transform: translate(0,0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(10%, 5%); }
+  30% { transform: translate(-5%, 10%); }
+  40% { transform: translate(2%, -8%); }
+  50% { transform: translate(-10%, 2%); }
+  60% { transform: translate(5%, 10%); }
+  70% { transform: translate(-8%, -5%); }
+  80% { transform: translate(10%, -2%); }
+  90% { transform: translate(-2%, 5%); }
+  100% { transform: translate(0,0); }
+}
+
+.konami-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.8;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 2px;
+}
+
+.konami-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.95) 100%);
+}
+
+.konami-interference {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.red-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #f87171;
+  pointer-events: none;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.4);
+}
+
+.konami-flicker-layer {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.03);
+  opacity: 0;
+  z-index: 38;
+  pointer-events: none;
+  animation: konami-hard-flicker 0.15s infinite;
+}
+
+@keyframes konami-hard-flicker {
+  0% { opacity: 0.02; }
+  20% { opacity: 0.05; }
+  40% { opacity: 0.01; }
+  60% { opacity: 0.04; }
+  80% { opacity: 0.02; }
+  100% { opacity: 0.03; }
+}
+
+.konami-pulse {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 50, 50, 0.1) 0%,
+    transparent 80%
+  );
+  animation: konami-pulse-anim 4s ease-in-out infinite;
+}
+
+@keyframes konami-pulse-anim {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.interference-sweep {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 150;
+  opacity: 0.4;
+  pointer-events: none;
+  background: rgba(255, 60, 60, 0.25);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  animation: konami-sweep-anim 8s linear infinite;
+}
+
+@keyframes konami-sweep-anim {
+  0% { top: -10%; opacity: 0; }
+  10%, 90% { opacity: 0.4; }
+  100% { top: 110%; opacity: 0; }
+}
+
+.ghost-text {
+  position: absolute;
+  z-index: 60; /* Above effect layers, below content */
+  pointer-events: none;
+  user-select: none;
+  font-size: clamp(60px, 15vw, 220px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: rgba(255, 60, 60, 0.06);
+  mix-blend-mode: soft-light;
+  text-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+}
+
+.breach-title {
+  position: relative;
+  font-size: clamp(40px, 9vw, 110px);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #ff5454;
+  margin-bottom: 1.5rem;
+  text-shadow: 
+    0 0 20px rgba(255, 70, 70, 0.4),
+    0 0 60px rgba(255, 0, 0, 0.15);
+}
+
+.breach-title::before,
+.breach-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.breach-title::before {
+  color: rgba(0, 255, 255, 0.3);
+  transform: translateX(-2px);
+  animation: konami-rgb-left 3s infinite alternate;
+}
+
+.breach-title::after {
+  color: rgba(255, 0, 255, 0.25);
+  transform: translateX(2px);
+  animation: konami-rgb-right 3.5s infinite alternate;
+}
+
+@keyframes konami-rgb-left {
+  0% { clip-path: inset(10% 0 70% 0); }
+  100% { clip-path: inset(70% 0 10% 0); }
+}
+
+@keyframes konami-rgb-right {
+  0% { clip-path: inset(60% 0 10% 0); }
+  100% { clip-path: inset(15% 0 70% 0); }
+}
+
+.breach-subtext {
+  color: #c8a96e;
+  font-size: clamp(12px, 2.5vw, 18px);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.breach-info-panel {
+  margin-top: 2rem;
+  width: min(92vw, 760px);
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(255, 70, 70, 0.3);
+  text-align: left;
+}
+
+.breach-info-line {
+  color: rgba(255, 110, 110, 0.9);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.breach-final-line {
+  color: #d7b47a;
+  font-weight: bold;
+}
+
+.classified-stamp {
+  position: absolute;
+  padding: 0.8rem 1.6rem;
+  border: 4px solid rgba(255, 80, 80, 0.3);
+  background: rgba(255, 0, 0, 0.05);
+  color: rgba(255, 80, 80, 0.4);
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 900;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  backdrop-filter: blur(2px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.system-status {
+  margin-top: 3rem;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  color: #c8a96e;
+}
+
+.system-status span {
+  color: #ff5a5a;
+}
+
+.corner-data {
+  position: absolute;
+  font-size: 11px;
+  line-height: 2;
+  color: rgba(255, 70, 70, 0.4);
+  letter-spacing: 0.2em;
+}
+
+.top-left { top: 2.5rem; left: 2.5rem; }
+.bottom-right { bottom: 2.5rem; right: 2.5rem; text-align: right; }
+
+.dismiss-btn {
+  margin-top: 3rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  background: transparent;
+  color: rgba(255, 110, 110, 0.75);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: all;
+}
+
+.dismiss-btn:hover {
+  background: rgba(255, 50, 50, 0.12);
+  color: rgba(255, 110, 110, 1);
+  border-color: rgba(255, 80, 80, 0.8);
+  box-shadow: 0 0 20px rgba(255, 50, 50, 0.15);
+}
+
+@media (max-width: 768px) {
+  .breach-info-panel { padding-left: 1rem; }
+  .breach-info-line { font-size: 11px; }
+  .classified-stamp { font-size: 18px; }
+  .corner-data { font-size: 9px; }
+}

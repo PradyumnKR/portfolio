@@ -9,76 +9,61 @@ export default function Projects() {
   const projects = [
     { 
       id: 'ARCH-001', 
-      title: 'Chronos Interface', 
-      desc: 'A temporal data visualization dashboard for tracking high-frequency network anomalies across distributed systems.', 
-      fullDesc: 'Deployment authorized to monitor asymmetric data spikes across internal routing nodes. The interface prioritizes rapid visual parsing of chronological distortions over raw numerical output. Built to withstand sudden influxes of corrupted packets without crashing the visualization loop.',
-      cat: 'Engineering', 
+      title: "SCRIBE'S CIPHER", 
+      desc: "A secure password and passphrase generator with real-time entropy estimation and crack-time prediction. Built with React 19, Tailwind CSS 4, and Framer Motion.", 
+      fullDesc: "A secure password and passphrase generator with real-time entropy estimation and crack-time prediction. Built with React 19, Tailwind CSS 4, and Framer Motion.",
+      cat: 'Frontend', 
       status: 'Deployed', 
       access: 'Public_Repo',
-      year: '2023',
+      year: '2026',
       collab: 'Solo Operation',
-      tech: ['React', 'D3.js', 'Node.js', 'WebGL'],
-      github: '#',
-      live: '#',
+      tech: ['REACT 19', 'TAILWIND CSS 4', 'FRAMER MOTION', 'ZXCVBN', 'VITE'],
+      github: 'https://github.com/PradyumnKR/password-generator',
+      live: 'https://scribes-cipher-nu-one-99.vercel.app/',
       img: null
     },
     { 
       id: 'ARCH-002', 
-      title: 'Linguistic Mapping', 
-      desc: 'Deep learning study into the etymological roots of technical jargon in post-industrial documentation.', 
-      fullDesc: 'An algorithmic dissection of legacy technical manuals recovered from archival servers. The model maps the semantic degradation of engineering terms over three decades, identifying isolated pockets of forgotten terminology. Current findings suggest a convergence towards hyper-optimized, dehumanized syntax.',
-      cat: 'Research', 
-      status: 'Ongoing', 
+      title: 'FILE SORTER', 
+      desc: 'A desktop automation utility that recursively organises files across 150+ extensions into 23 smart categories.', 
+      fullDesc: 'A desktop automation utility that recursively organises files across 150+ extensions into 23 smart categories. Features dry-run preview and undo support for safe file operations.',
+      cat: 'Engineering', 
+      status: 'Completed', 
       access: 'Restricted',
-      year: '2023',
+      year: '2026',
       collab: 'Solo Operation',
-      tech: ['Python', 'TensorFlow', 'NLTK', 'PostgreSQL'],
-      github: '#',
+      tech: ['PYTHON', 'CUSTOMTKINTER', 'PYINSTALLER'],
+      github: 'https://gitlab.com/PradyumnKR/file-sorter',
       live: '#',
       img: null
     },
     { 
       id: 'ARCH-003', 
-      title: 'Aether Typography', 
-      desc: 'Variable font design exploring legibility in low-light digital environments and atmospheric UI overlays.', 
-      fullDesc: 'Experimental typefaces engineered specifically for terminal interfaces operating under minimal power conditions. The glyphs utilize varying stroke contrast to remain legible even when subjected to heavy CRT scanline distortion and sub-pixel color bleeding. A study in necessary brutalism.',
-      cat: 'Design', 
-      status: 'Archived', 
+      title: 'FRAUD DETECTION ENGINE', 
+      desc: 'A Random Forest model trained on 280K+ transactions with SMOTE oversampling, achieving 0.92 recall for real-time fraud prediction.', 
+      fullDesc: 'A Random Forest model trained on 280K+ transactions with SMOTE oversampling, achieving 0.92 recall for real-time fraud prediction. Interactive Streamlit UI for non-technical users.',
+      cat: 'Research', 
+      status: 'Deployed', 
       access: 'Open_Source',
-      year: '2023',
+      year: '2025',
       collab: 'Solo Operation',
-      tech: ['GlyphsApp', 'Python', 'CSS3', 'OpenType.js'],
-      github: '#',
-      live: '#',
+      tech: ['PYTHON', 'SCIKIT-LEARN', 'SMOTE', 'STREAMLIT'],
+      github: 'https://github.com/PradyumnKR/credit-card-fraud-detection-app',
+      live: 'https://credit-card-fraud-detection-app-nsnthwqeb243xo4duqocua.streamlit.app',
       img: null
     },
     { 
       id: 'ARCH-004', 
-      title: 'Neural Synthesis', 
-      desc: 'Procedural generation of architectural layouts using genetic algorithms and historical floorplan datasets.', 
-      fullDesc: 'A generative system tasked with synthesizing highly defensible floorplans based on historical bunker designs. Iterations are evaluated on structural integrity and line-of-sight optimization. The output occasionally produces non-euclidean anomalies that require manual suppression.',
-      cat: 'Engineering', 
-      status: 'Completed', 
-      access: 'Internal',
-      year: '2023',
-      collab: 'Solo Operation',
-      tech: ['C++', 'OpenGL', 'Python', 'Docker'],
-      github: '#',
-      live: '#',
-      img: null
-    },
-    { 
-      id: 'ARCH-005', 
-      title: 'Dark Curriculum', 
-      desc: 'A curriculum framework for self-taught computational design students focusing on dark-mode aesthetics.', 
-      fullDesc: 'A structured pathway for initiating new operatives into the principles of high-contrast, low-latency interface design. Emphasizes the psychological impact of negative space and the necessity of rejecting bloated, modern web frameworks in favor of absolute structural control.',
+      title: 'THIS PORTFOLIO', 
+      desc: 'A dark academia meets survival horror terminal portfolio. Built with React, Tailwind CSS, and Framer Motion.', 
+      fullDesc: 'A dark academia meets survival horror terminal portfolio. Built with React, Tailwind CSS, and Framer Motion. Features ambient audio, custom cursor, CRT effects, and classified document aesthetic throughout.',
       cat: 'Design', 
-      status: 'Completed', 
-      access: 'Public',
-      year: '2023',
+      status: 'Deployed', 
+      access: 'Internal',
+      year: '2026',
       collab: 'Solo Operation',
-      tech: ['Markdown', 'Next.js', 'TailwindCSS', 'Figma'],
-      github: '#',
+      tech: ['REACT', 'TAILWIND CSS', 'FRAMER MOTION', 'VITE'],
+      github: 'https://github.com/PradyumnKR/portfolio',
       live: '#',
       img: null
     },
@@ -110,25 +95,25 @@ export default function Projects() {
               transition={{ duration: 0.2 }}
             >
               {/* Hero Section */}
-              <div className="mb-12 border-l-4 border-gold pl-6 py-2 text-left">
-                <h1 className="text-parchment text-5xl font-bold leading-tight tracking-tighter mb-4 uppercase">Project Compendium</h1>
-                <p className="text-gold/70 text-lg max-w-2xl font-light italic">
-                  A rigorous classification of digital artifacts, architectural experiments, and investigative research conducted between 2020—2024.
+              <div className="mb-10 sm:mb-12 border-l-4 border-gold pl-4 sm:pl-6 py-2 text-left">
+                <h1 className="text-parchment text-3xl sm:text-5xl font-bold leading-tight tracking-tighter mb-4 uppercase">Project Compendium</h1>
+                <p className="text-gold/70 text-base sm:text-lg max-w-2xl font-light italic">
+                  A rigorous classification of digital artifacts, architectural experiments, and investigative research conducted between 2024—2026.
                 </p>
               </div>
 
               {/* Category Filters */}
-              <div className="flex flex-wrap gap-4 mb-10 border-b border-gold/10 pb-8 relative z-10">
+              <div className="flex flex-wrap gap-3 sm:gap-4 mb-10 border-b border-gold/10 pb-8 relative z-10">
                 <button 
                   onClick={() => setActiveFilter('All_Files')}
-                  className={`flex h-10 items-center justify-center gap-x-2 rounded px-5 font-bold text-xs uppercase tracking-widest transition-all ${activeFilter === 'All_Files' ? 'bg-gold text-espresso' : 'bg-gold/10 text-gold border border-gold/20 hover:bg-gold/20'}`}>
+                  className={`flex h-9 sm:h-10 items-center justify-center gap-x-2 rounded px-4 sm:px-5 font-bold text-[10px] sm:text-xs uppercase tracking-widest transition-all ${activeFilter === 'All_Files' ? 'bg-gold text-espresso' : 'bg-gold/10 text-gold border border-gold/20 hover:bg-gold/20'}`}>
                   [00] All_Files
                 </button>
                 {['Design', 'Engineering', 'Research'].map((cat, i) => (
                   <button 
                     key={cat} 
                     onClick={() => setActiveFilter(cat)}
-                    className={`flex h-10 items-center justify-center gap-x-2 rounded px-5 font-bold text-xs uppercase tracking-widest transition-all ${activeFilter === cat ? 'bg-gold text-espresso' : 'bg-gold/10 text-gold border border-gold/20 hover:bg-gold/20'}`}>
+                    className={`flex h-9 sm:h-10 items-center justify-center gap-x-2 rounded px-4 sm:px-5 font-bold text-[10px] sm:text-xs uppercase tracking-widest transition-all ${activeFilter === cat ? 'bg-gold text-espresso' : 'bg-gold/10 text-gold border border-gold/20 hover:bg-gold/20'}`}>
                     [0{i+1}] {cat}
                   </button>
                 ))}
@@ -276,39 +261,39 @@ export default function Projects() {
               </div>
 
               {/* Metadata Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-12 border-b border-[rgba(200,169,110,0.15)] pb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 sm:gap-y-6 gap-x-12 mb-10 sm:mb-12 border-b border-[rgba(200,169,110,0.15)] pb-10 sm:pb-12 px-2 sm:px-0">
                 <div className="flex flex-col gap-4">
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">PROJECT_ID:</span>
-                    <span className="font-mono text-[12px] text-[#f0ead8] opacity-85 uppercase">#{selectedProject.id}</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase">PROJECT_ID:</span>
+                    <span className="font-mono text-[11px] sm:text-[12px] text-[#f0ead8] opacity-85 uppercase">#{selectedProject.id}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">STATUS:</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase">STATUS:</span>
                     <div className="flex items-center gap-2">
                       <div className={`w-1.5 h-1.5 rounded-full ${selectedProject.status === 'Ongoing' ? 'bg-[#c8a96e] animate-pulse' : 'bg-green-500/80'}`}></div>
-                      <span className="font-mono text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.status}</span>
+                      <span className="font-mono text-[11px] sm:text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.status}</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">CATEGORY:</span>
-                    <span className="font-mono text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.cat}</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase">CATEGORY:</span>
+                    <span className="font-mono text-[11px] sm:text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.cat}</span>
                   </div>
                 </div>
                 
                 <div className="flex flex-col gap-4">
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">INITIATED:</span>
-                    <span className="font-mono text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.year}</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase">INITIATED:</span>
+                    <span className="font-mono text-[11px] sm:text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.year}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">COLLABORATORS:</span>
-                    <span className="font-mono text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.collab}</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase">COLLABORATORS:</span>
+                    <span className="font-mono text-[11px] sm:text-[12px] text-[#f0ead8] opacity-85 uppercase">{selectedProject.collab}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-b border-[rgba(200,169,110,0.05)] pb-2">
-                    <span className="font-mono text-[10px] text-[#c8a96e] opacity-60 uppercase">STACK:</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] opacity-60 uppercase shrink-0">STACK:</span>
                     <div className="flex flex-wrap gap-1 justify-end">
                       {selectedProject.tech.map(t => (
-                        <span key={t} className="border border-[rgba(200,169,110,0.3)] text-[#c8a96e] bg-transparent font-mono text-[10px] px-[8px] py-[2px] uppercase tracking-tighter">
+                        <span key={t} className="border border-[rgba(200,169,110,0.3)] text-[#c8a96e] bg-transparent font-mono text-[9px] sm:text-[10px] px-[8px] py-[2px] uppercase tracking-tighter">
                           {t}
                         </span>
                       ))}
@@ -318,44 +303,54 @@ export default function Projects() {
               </div>
 
               {/* Description Block */}
-              <div className="mb-16 text-left">
-                <div className="font-mono text-[10px] text-[#c8a96e] uppercase tracking-widest mb-6">MISSION BRIEF //</div>
-                <div className="border-l-2 border-[rgba(200,169,110,0.3)] pl-[20px]">
-                  <p className="font-mono text-[13px] leading-[1.9] text-[rgba(240,234,216,0.8)] text-justify">
+              <div className="mb-12 sm:mb-16 text-left px-2 sm:px-0">
+                <div className="font-mono text-[9px] sm:text-[10px] text-[#c8a96e] uppercase tracking-widest mb-6">MISSION BRIEF //</div>
+                <div className="border-l-2 border-[rgba(200,169,110,0.3)] pl-[16px] sm:pl-[20px]">
+                  <p className="font-mono text-[12px] sm:text-[13px] leading-[1.8] sm:leading-[1.9] text-[rgba(240,234,216,0.8)] text-justify">
                     {selectedProject.fullDesc}
                   </p>
                 </div>
               </div>
 
               {/* Action Links */}
-              <div className="flex flex-wrap gap-6 mb-12 justify-start">
-                <a href={selectedProject.live} className="border border-[rgba(200,169,110,0.4)] bg-transparent text-[#c8a96e] font-mono text-[11px] tracking-[0.15em] px-[24px] py-[10px] uppercase hover:bg-[rgba(200,169,110,0.08)] hover:border-[#c8a96e] transition-all">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-12 justify-start px-2 sm:px-0">
+                <a 
+                  href={selectedProject.live} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto border border-[rgba(200,169,110,0.4)] bg-transparent text-[#c8a96e] font-mono text-[10px] sm:text-[11px] tracking-[0.15em] px-[24px] py-[12px] sm:py-[10px] uppercase hover:bg-[rgba(200,169,110,0.08)] hover:border-[#c8a96e] transition-all text-center"
+                >
                   [VIEW LIVE DEPLOYMENT →]
                 </a>
-                <a href={selectedProject.github} className="border border-[rgba(200,169,110,0.4)] bg-transparent text-[#c8a96e] font-mono text-[11px] tracking-[0.15em] px-[24px] py-[10px] uppercase hover:bg-[rgba(200,169,110,0.08)] hover:border-[#c8a96e] transition-all">
+                <a 
+                  href={selectedProject.github} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto border border-[rgba(200,169,110,0.4)] bg-transparent text-[#c8a96e] font-mono text-[10px] sm:text-[11px] tracking-[0.15em] px-[24px] py-[12px] sm:py-[10px] uppercase hover:bg-[rgba(200,169,110,0.08)] hover:border-[#c8a96e] transition-all text-center"
+                >
                   [INSPECT SOURCE CODE ↗]
                 </a>
               </div>
 
               {/* Navigation Footer */}
-              <div className="pt-6 mb-[80px] border-t border-[rgba(200,169,110,0.15)] flex justify-between items-center">
+              <div className="pt-6 mb-[80px] border-t border-[rgba(200,169,110,0.15)] flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0 px-2 sm:px-0">
                 {selectedProjectIndex > 0 ? (
                   <button 
                     onClick={() => setSelectedProjectId(projects[selectedProjectIndex - 1].id)}
-                    className="font-mono text-[11px] text-[#c8a96e] opacity-60 hover:opacity-100 transition-opacity uppercase tracking-tighter"
+                    className="w-full sm:w-auto font-mono text-[10px] sm:text-[11px] text-[#c8a96e] opacity-60 hover:opacity-100 transition-opacity uppercase tracking-tighter sm:text-left"
                   >
-                    ← PREVIOUS CASE FILE
+                    &larr; PREVIOUS CASE FILE
                   </button>
-                ) : <div></div>}
+                ) : <div className="hidden sm:block"></div>}
                 
                 {selectedProjectIndex < projects.length - 1 ? (
                   <button 
                     onClick={() => setSelectedProjectId(projects[selectedProjectIndex + 1].id)}
-                    className="font-mono text-[11px] text-[#c8a96e] opacity-60 hover:opacity-100 transition-opacity uppercase tracking-tighter"
+                    className="w-full sm:w-auto font-mono text-[10px] sm:text-[11px] text-[#c8a96e] opacity-60 hover:opacity-100 transition-opacity uppercase tracking-tighter sm:text-right"
                   >
                     NEXT CASE FILE →
                   </button>
-                ) : <div></div>}
+                ) : <div className="hidden sm:block"></div>}
               </div>
             </motion.div>
           )}

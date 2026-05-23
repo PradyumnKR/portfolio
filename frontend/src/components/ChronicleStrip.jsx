@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 
 const ChronicleStrip = () => {
   const events = [
-    { year: '2020', text: 'First Neural Map Deployment' },
-    { year: '2021', text: 'Archival System Beta' },
-    { year: '2022', text: 'Aether Dynamics Launch' },
-    { year: '2023', text: 'Temporal Interface V2' },
-    { year: '2024', text: 'Syllabus Core Complete' },
-    { year: '2025', text: 'Dossier Indexing Active' },
+    { year: '2022', text: 'JECRC AI & DS Enrollment' },
+    { year: '2023', text: 'SIH Prelims Runner-up' },
+    { year: '2025', text: 'Fraud Detection Engine' },
+    { year: '2026', text: 'ServiceNow Deployment' },
+    { year: '2026', text: "Scribe's Cipher Launch" },
+    { year: '2026', text: 'Nocturne Studies Active' },
   ];
 
   const duplicatedEvents = [...events, ...events, ...events];
