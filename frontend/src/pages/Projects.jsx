@@ -67,6 +67,36 @@ export default function Projects() {
       live: '#',
       img: null
     },
+    { 
+      id: 'ARCH-005', 
+      title: 'SENTINEL OPS', 
+      desc: 'An enterprise-grade AI-powered security incident command center featuring active lifecycle tracking, state-machine transitions, and Llama 3.3 threat reports.', 
+      fullDesc: 'An enterprise-grade AI-Powered Security Incident Command Center designed for high-stakes DevOps and Security Operations. Monitors active alerts, coordinates incident response lifecycles with strict state-machine transitions, and leverages Llama 3.3 for automated risk assessments and recovery runbooks. Includes a complete platform audit log.',
+      cat: 'Engineering', 
+      status: 'Deployed', 
+      access: 'Open_Source',
+      year: '2026',
+      collab: 'Solo Operation',
+      tech: ['REACT 18', 'FASTAPI', 'POSTGRESQL', 'TAILWIND CSS', 'GROQ', 'AXIOS'],
+      github: 'https://github.com/PradyumnKR/sentinel-ops',
+      live: 'https://sentinel-ops-pied.vercel.app',
+      img: null
+    },
+    { 
+      id: 'ARCH-006', 
+      title: 'LEDGERLY', 
+      desc: "An AI-powered personal finance platform featuring an immutable ledger, integer minor units to prevent float drift, and natural-language entry.", 
+      fullDesc: "An AI-powered personal finance platform featuring an immutable financial ledger, intelligent transaction categorization, budgeting, analytics dashboards, and natural-language transaction entry. Follows professional accounting standards with compensating reversal entries for data correction, pessimistic row locking for concurrency safety, and integer minor units to eliminate floating-point drift.",
+      cat: 'Engineering', 
+      status: 'Completed', 
+      access: 'Public_Repo',
+      year: '2026',
+      collab: 'Solo Operation',
+      tech: ['NEXT.JS 16', 'FASTAPI', 'POSTGRESQL', 'TAILWIND CSS 4', 'DOCKER', 'GROQ'],
+      github: 'https://github.com/PradyumnKR/ledgerly',
+      live: 'https://ledgerly-one-opal.vercel.app/login',
+      img: null
+    },
   ];
 
   const getStatusState = (status) => {

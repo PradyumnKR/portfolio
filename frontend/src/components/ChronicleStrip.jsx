@@ -7,6 +7,8 @@ const ChronicleStrip = () => {
     { year: '2025', text: 'Fraud Detection Engine' },
     { year: '2026', text: 'ServiceNow Deployment' },
     { year: '2026', text: "Scribe's Cipher Launch" },
+    { year: '2026', text: 'Sentinel Ops Launch' },
+    { year: '2026', text: 'Ledgerly Launch' },
     { year: '2026', text: 'Nocturne Studies Active' },
   ];
 

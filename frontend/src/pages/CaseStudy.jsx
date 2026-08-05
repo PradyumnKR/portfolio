@@ -51,16 +51,28 @@ const PROJECT_DATA = {
     outcome: 'Initial design phase reduced from 12 weeks to 48 hours. Architects can now focus on high-level spatial curation rather than manual compliance checking.'
   },
   'ARCH-005': {
-    title: 'Syllabus Design',
-    status: 'PUBLIC',
-    clearance: 'LEVEL 1',
-    date: 'JAN 2023',
-    github: 'https://github.com/username/syllabus-design',
-    deployed: 'https://username.github.io/syllabus-design',
-    problem: 'Self-taught designers often lack a structured path for mastering the intersection of computational logic and classical aesthetic theory, leading to "aesthetic drift."',
-    investigation: 'Surveyed 500+ design students. Identified a massive gap in resources that bridge the divide between "coding for the web" and "designing for the screen."',
-    solution: 'Designed a 12-module interactive syllabus focusing on dark-mode aesthetics, typography, and procedural layouts. Built an open-source platform for tracking progress through the curriculum.',
-    outcome: 'The syllabus has been adopted by 5 independent design collectives. Student projects show a 50% increase in "thematic consistency" and technical implementation quality.'
+    title: 'Sentinel Ops',
+    status: 'DECLASSIFIED',
+    clearance: 'LEVEL 4',
+    date: 'JUN 2026',
+    github: 'https://github.com/PradyumnKR/sentinel-ops',
+    deployed: 'https://sentinel-ops-pied.vercel.app',
+    problem: 'High-velocity DevOps and security environments suffer from operator eye strain during long triage sessions, lack auditable and locked histories for resolved incidents, and struggle with slow manual runbook generation.',
+    investigation: 'Analyzed incident command setups and security dashboard ergonomics. Identified key bottlenecks in incident transition state validity and slow cognitive retrieval of security runbooks.',
+    solution: 'Engineered the Obsidian Command dark-theme console using CSS Variables and glassmorphic containers. Enforced state-machine transitions and automatically locked incidents post-resolution. Integrated Llama 3.3 via Groq for automated runbook generation, severity syncing, and threat analysis, and built a searchable audit logging engine.',
+    outcome: 'Reduced incident triage reaction times and eye strain. State transitions are strictly enforced, and AI-powered assessments generate recovery runbooks in real time. Live deployment hosted on Vercel.'
+  },
+  'ARCH-006': {
+    title: 'Ledgerly',
+    status: 'DECLASSIFIED',
+    clearance: 'LEVEL 3',
+    date: 'AUG 2026',
+    github: 'https://github.com/PradyumnKR/ledgerly',
+    deployed: 'https://ledgerly-one-opal.vercel.app/login',
+    problem: 'Conventional financial applications treat transactions as mutable CRUD operations, risking audit failures, database floating-point calculation drift, and race conditions during concurrent balance updates.',
+    investigation: 'Analyzed standard floating-point handling, which introduced rounding discrepancies. Examined concurrent write behaviors under heavy traffic, revealing that parallel requests led to lost updates and duplicate writes.',
+    solution: 'Enforced absolute immutability by designing an append-only ledger where corrections require compensating reversal entries. Implemented minor-unit integer storage to prevent floating-point drift, row locking (SELECT FOR UPDATE) to serialize writes, and an Idempotency-Key header to block duplicate submissions. Integrated Llama 3.3 for natural-language entry.',
+    outcome: 'Achieved 100% precision in financial records with zero float drift. Balance updates remained concurrency-safe under 20 simultaneous writes, with write idempotency preventing duplicate transaction charges.'
   }
 };
 

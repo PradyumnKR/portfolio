@@ -983,16 +983,16 @@ export default function Home() {
                       DECLASSIFIED
                     </motion.div>
                     <span className="text-gold/40 font-mono text-[9px] sm:text-[10px]">
-                      CASE_REF // ARCH-001
+                      CASE_REF // ARCH-006
                     </span>
                   </div>
                   <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-parchment uppercase tracking-tighter">
-                    Scribe's Cipher
+                    Ledgerly
                   </h3>
                   <p className="text-ink-dim text-base sm:text-lg leading-relaxed font-serif italic">
-                    A secure password and passphrase generator with real-time
-                    entropy estimation and crack-time prediction. Built with
-                    React 19 and Framer Motion.
+                    An AI-powered personal finance platform featuring an immutable
+                    ledger, budgeting, analytics dashboards, and natural-language
+                    transaction entry. Built with Next.js 16 and FastAPI.
                   </p>
                 </div>
                 <div className="flex flex-row md:flex-col justify-between md:justify-end items-end gap-4">
@@ -1001,7 +1001,7 @@ export default function Home() {
                       Authorization
                     </span>
                     <span className="text-[10px] text-parchment font-mono">
-                      LEVEL_2_CLEARED
+                      LEVEL_3_CLEARED
                     </span>
                   </div>
                   <div className="text-right">
@@ -1009,7 +1009,7 @@ export default function Home() {
                       Checksum
                     </span>
                     <span className="text-[10px] text-parchment font-mono">
-                      0x7B9C4...
+                      0x8C2F5...
                     </span>
                   </div>
                 </div>

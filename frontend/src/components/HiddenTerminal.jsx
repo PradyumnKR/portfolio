@@ -16,12 +16,14 @@ BASE: Jaipur, Rajasthan // India
 STATUS: ACTIVE — SEEKING DEPLOYMENT
 AFFILIATION: NOCTURNE STUDIES`,
 
-  'ls projects': `ARCHIVE INDEX // 4 ARTIFACTS CATALOGUED
+  'ls projects': `ARCHIVE INDEX // 6 ARTIFACTS CATALOGUED
 
   [ARCH-001] SCRIBE'S CIPHER ............. DEPLOYED
   [ARCH-002] FILE SORTER ................. COMPLETED  
   [ARCH-003] FRAUD DETECTION ENGINE ...... DEPLOYED
   [ARCH-004] THIS PORTFOLIO .............. LIVE
+  [ARCH-005] SENTINEL OPS ................ DEPLOYED
+  [ARCH-006] LEDGERLY .................... COMPLETED
 
   ACCESS: navigate to /projects for full dossiers`,
 
