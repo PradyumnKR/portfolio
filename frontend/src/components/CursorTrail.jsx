@@ -34,6 +34,8 @@ export default function CursorTrail() {
 
     // Separate position tracking — NO shared references
     const positions = Array.from({ length: COUNT }, () => ({ x: -100, y: -100 }));
+    // Cache half-sizes (offsets) statically to completely avoid offsetWidth/offsetHeight reads
+    const offsets = Array.from({ length: COUNT }, (_, i) => Math.max(2, 6 - i) / 2);
     let mouse = { x: -100, y: -100 };
     let started = false;
     let raf;
@@ -59,7 +61,8 @@ export default function CursorTrail() {
       }
 
       dots.forEach((dot, i) => {
-        dot.style.transform = `translate(${positions[i].x - dot.offsetWidth/2}px, ${positions[i].y - dot.offsetHeight/2}px)`;
+        // Use translate3d for GPU hardware acceleration and use static cached offsets
+        dot.style.transform = `translate3d(${positions[i].x - offsets[i]}px, ${positions[i].y - offsets[i]}px, 0)`;
         dot.style.opacity = started ? String((1 - i / COUNT) * 0.6) : '0';
       });
 

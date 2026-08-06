@@ -6,11 +6,28 @@ import ChronicleStrip from "../components/ChronicleStrip";
 import StatusIndicator from "../components/StatusIndicator";
 
 const useGithubCommits = () => {
-  const [totalCommits, setTotalCommits] = useState(null);
+  const [totalCommits, setTotalCommits] = useState(() => {
+    const cached = localStorage.getItem("github_commits_count");
+    const timestamp = localStorage.getItem("github_commits_timestamp");
+    const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
+    if (cached && timestamp && Date.now() - parseInt(timestamp) < CACHE_DURATION) {
+      return parseInt(cached);
+    }
+    return null;
+  });
+
   useEffect(() => {
     const fetchCommits = async () => {
       const username = "PradyumnKR";
       const token = import.meta.env.VITE_GITHUB_TOKEN;
+      const cached = localStorage.getItem("github_commits_count");
+      const timestamp = localStorage.getItem("github_commits_timestamp");
+      const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
+
+      // Skip fetch if cache is fresh
+      if (cached && timestamp && Date.now() - parseInt(timestamp) < CACHE_DURATION) {
+        return;
+      }
 
       const headers = {
         Accept: "application/vnd.github.v3+json",
@@ -21,6 +38,7 @@ const useGithubCommits = () => {
           `https://api.github.com/users/${username}/repos?per_page=100&type=owner`,
           { headers },
         );
+        if (!reposRes.ok) throw new Error("GitHub repos fetch failed");
         const repos = await reposRes.json();
         const commitCounts = await Promise.all(
           repos.map(async (repo) => {
@@ -47,24 +65,49 @@ const useGithubCommits = () => {
         );
         const total = commitCounts.reduce((sum, n) => sum + n, 0);
         setTotalCommits(total);
+        localStorage.setItem("github_commits_count", String(total));
+        localStorage.setItem("github_commits_timestamp", String(Date.now()));
       } catch (err) {
         console.error("GitHub API error:", err);
-        setTotalCommits(null); // Fallback
+        if (cached) {
+          setTotalCommits(parseInt(cached));
+        }
       }
     };
     fetchCommits();
   }, []);
+
   return totalCommits;
 };
 
 const useDSAStats = () => {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState(() => {
+    const cached = localStorage.getItem("dsa_stats");
+    const timestamp = localStorage.getItem("dsa_stats_timestamp");
+    const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
+    if (cached && timestamp && Date.now() - parseInt(timestamp) < CACHE_DURATION) {
+      try {
+        return JSON.parse(cached);
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  });
+  const [loading, setLoading] = useState(!stats);
 
   useEffect(() => {
     const fetchStats = async () => {
       const leetcodeUser = import.meta.env.VITE_LEETCODE_USERNAME;
       const gfgUser = import.meta.env.VITE_GFG_USERNAME;
+      const cached = localStorage.getItem("dsa_stats");
+      const timestamp = localStorage.getItem("dsa_stats_timestamp");
+      const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
+
+      if (cached && timestamp && Date.now() - parseInt(timestamp) < CACHE_DURATION) {
+        setLoading(false);
+        return;
+      }
 
       try {
         const results = await Promise.allSettled([
@@ -91,19 +134,16 @@ const useDSAStats = () => {
         const profileData =
           results[3].status === "fulfilled" ? results[3].value : null;
 
-        // Extract LeetCode metrics
         const lcTotal = lcData?.totalSolved || 0;
         const lcEasy = lcData?.easySolved || 0;
         const lcMedium = lcData?.mediumSolved || 0;
         const lcHard = lcData?.hardSolved || 0;
 
-        // Extract GFG metrics
         const gfgTotal = gfgData?.totalProblemsSolved || 0;
         const gfgEasy = gfgData?.Easy || 0;
         const gfgMedium = gfgData?.Medium || 0;
         const gfgHard = gfgData?.Hard || 0;
 
-        // Compute Problems this week from submissionCalendar
         let problemsThisWeek = 0;
         if (lcData?.submissionCalendar) {
           const nowSeconds = Math.floor(Date.now() / 1000);
@@ -117,7 +157,6 @@ const useDSAStats = () => {
           );
         }
 
-        // Find latest solved problem from profile
         const latestProblem = profileData?.recentSubmissions?.find(
           (sub) => sub.statusDisplay === "Accepted",
         );
@@ -150,18 +189,17 @@ const useDSAStats = () => {
         };
 
         setStats(combinedStats);
+        localStorage.setItem("dsa_stats", JSON.stringify(combinedStats));
+        localStorage.setItem("dsa_stats_timestamp", String(Date.now()));
       } catch (err) {
         console.error("Critical DSA stats error:", err);
-        setStats({
-          total: null,
-          easy: null,
-          medium: null,
-          hard: null,
-          leetcode: { total: null },
-          gfg: { total: null },
-          heatmap: { lastActiveDate: "N/A", currentStreak: null },
-          problemsThisWeek: null,
-        });
+        if (cached) {
+          try {
+            setStats(JSON.parse(cached));
+          } catch {
+            // ignore
+          }
+        }
       } finally {
         setLoading(false);
       }

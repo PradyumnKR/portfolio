@@ -10,9 +10,9 @@ export default function LoadingScreen({ onComplete }) {
     // Phase 1: Slow fade-in of the atmospheric warning/intro card
     // Phase 2: Slow fade-out of the text
     // onComplete triggers the component unmount and reveals the main app
-    const t1 = setTimeout(() => setPhase(1), 500);
-    const t2 = setTimeout(() => setPhase(2), 3500);
-    const t3 = setTimeout(onComplete, 4500); 
+    const t1 = setTimeout(() => setPhase(1), 300);
+    const t2 = setTimeout(() => setPhase(2), 2100);
+    const t3 = setTimeout(onComplete, 2700); 
 
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);

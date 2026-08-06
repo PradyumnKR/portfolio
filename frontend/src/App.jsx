@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
@@ -17,17 +17,21 @@ import KonamiCode from './components/KonamiCode';
 
 // Import Pages
 import Home from './pages/Home';
-import Projects from './pages/Projects';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Skills from './pages/Skills';
-import CaseStudy from './pages/CaseStudy';
-import FieldNotes from './pages/FieldNotes';
-import Resume from './pages/Resume';
-import NotFound from './pages/NotFound';
+
+const Projects = lazy(() => import('./pages/Projects'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Skills = lazy(() => import('./pages/Skills'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
+const FieldNotes = lazy(() => import('./pages/FieldNotes'));
+const Resume = lazy(() => import('./pages/Resume'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Check if the user has already loaded the app in the current session
+    return !sessionStorage.getItem('has_visited_nocturne');
+  });
 
   return (
     <div className="relative flex min-h-screen w-full flex-col font-mono bg-espresso text-parchment selection:bg-gold/30 selection:text-white overflow-x-hidden">
@@ -38,7 +42,10 @@ function App() {
         {isLoading && (
           <LoadingScreen 
             key="loading" 
-            onComplete={() => setIsLoading(false)} 
+            onComplete={() => {
+              sessionStorage.setItem('has_visited_nocturne', 'true');
+              setIsLoading(false);
+            }} 
           />
         )}
       </AnimatePresence>
@@ -51,17 +58,19 @@ function App() {
       <KonamiCode />
       <Navbar />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects/:id" element={<CaseStudy />} />
-          <Route path="/journal" element={<FieldNotes />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/projects/:id" element={<CaseStudy />} />
+            <Route path="/journal" element={<FieldNotes />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>

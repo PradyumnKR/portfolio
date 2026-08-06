@@ -20,7 +20,7 @@ export default function About() {
                 <img 
                   alt="Pradyumn Kumar Shukla" 
                   className="w-full h-full object-cover object-top block mix-blend-luminosity [filter:contrast(1.1)_brightness(0.85)_grayscale(10%)]" 
-                  src="/assets/portrait.png"
+                  src="/assets/portrait.webp"
                 />
                 {/* LAYER 2 — CLASSIFIED stamp */}
                 <span className="absolute bottom-[16px] left-1/2 -translate-x-1/2 -rotate-8 py-[3px] px-[8px] border border-gold/40 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-gold/60 z-40 whitespace-nowrap bg-espresso/40 backdrop-blur-sm">
