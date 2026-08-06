@@ -433,6 +433,12 @@
     opacity: 0.24;
   }
 
+  body:not(.crt-overlay) .crt-button::before,
+  body:not(.crt-overlay) .crt-button::after {
+    content: none !important;
+    animation: none !important;
+  }
+
   .cell-unfilled {
     background: rgba(200, 169, 110, 0.12);
     opacity: 1;

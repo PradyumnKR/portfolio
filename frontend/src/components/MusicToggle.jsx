@@ -20,7 +20,7 @@ const VinylRecord = () => (
 );
 
 export default function MusicToggle() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const audioRef = useRef(null);
   const playAttemptedRef = useRef(false);
@@ -29,33 +29,6 @@ export default function MusicToggle() {
     if (audioRef.current) {
       audioRef.current.volume = 0.3; // Low volume for ambient feel
       audioRef.current.loop = true;
-
-      const tryPlay = () => {
-        // Only try to auto-play if the user hasn't explicitly clicked pause
-        if (!playAttemptedRef.current && audioRef.current) {
-          audioRef.current.play().then(() => {
-             playAttemptedRef.current = true;
-             document.removeEventListener('click', tryPlay);
-             document.removeEventListener('keydown', tryPlay);
-          }).catch(() => {
-             // Still blocked by browser
-          });
-        }
-      };
-
-      // Browsers block autoplay. Try playing immediately, and if it fails,
-      // wait for the user's very first interaction (click or keypress) to start the music.
-      audioRef.current.play().then(() => {
-        playAttemptedRef.current = true;
-      }).catch(() => {
-        document.addEventListener('click', tryPlay);
-        document.addEventListener('keydown', tryPlay);
-      });
-      
-      return () => {
-        document.removeEventListener('click', tryPlay);
-        document.removeEventListener('keydown', tryPlay);
-      };
     }
   }, []);
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const CRTToggle = () => {
   const [crtEnabled, setCrtEnabled] = useState(() => {
     const cached = localStorage.getItem('crt_enabled');
-    return cached === null ? true : cached === 'true';
+    return cached === null ? false : cached === 'true';
   });
 
   useEffect(() => {
