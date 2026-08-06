@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 
 const CRTToggle = () => {
-  const [crtEnabled, setCrtEnabled] = useState(true);
+  const [crtEnabled, setCrtEnabled] = useState(() => {
+    const cached = localStorage.getItem('crt_enabled');
+    return cached === null ? true : cached === 'true';
+  });
 
   useEffect(() => {
     if (crtEnabled) {
@@ -9,6 +12,7 @@ const CRTToggle = () => {
     } else {
       document.body.classList.remove('crt-overlay');
     }
+    localStorage.setItem('crt_enabled', String(crtEnabled));
   }, [crtEnabled]);
 
   return (

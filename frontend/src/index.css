@@ -331,6 +331,10 @@
     pointer-events: none;
   }
 
+  body:not(.crt-overlay) .scanline-container {
+    display: none !important;
+  }
+
   .status-pulse {
     animation: pulse-green 2s infinite;
   }
