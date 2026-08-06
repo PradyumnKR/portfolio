@@ -42,3 +42,6 @@ pnpm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Local project readmes
+project_readme/
