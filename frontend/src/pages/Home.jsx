@@ -552,7 +552,7 @@ export default function Home() {
                 },
                 {
                   label: "Artifacts",
-                  val: 4,
+                  val: 6,
                   icon: "deployed_code",
                   duration: 2000,
                   delay: 200,
